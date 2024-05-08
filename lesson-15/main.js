@@ -18,14 +18,14 @@ const mongoose = require("mongoose"); // Mongoose 모듈의 요청
 mongoose.Promise = global.Promise; // 필요 없을 것 같은데?
 
 mongoose.connect(
-  "mongodb://localhost:27017/recipe_db", // 데이터베이스 연결 설정
+  "mongodb+srv://mymarket67:1234@cluster0.tagycdz.mongodb.net/", // 데이터베이스 연결 설정
   { useNewUrlParser: true }
 );
 
 // 애플리케이션이 데이터베이스에 연결됐을 때 메시지 출력
 const db = mongoose.connection; // db 변수에 데이터베이스 할당
 
-/**
+/**c
  * Listing 14.2 (p. 206)
  * 데이터베이스 연결 이벤트 처리
  */
@@ -58,15 +58,15 @@ app.get("/name/:myName", homeController.respondWithName2);
  * 구독자 컨트롤러 사용
  */
 
-
+app.get("/subscribers", subscribersController.getAllSubscribers2)
 /**
  * @TODO: Listing 15.5 (p. 219-220)
  * 구독을 위한 라우트
  */
-// 구독 페이지를 위한 GET 라우트
-
+// 구독 페이지를 위한 GET 라우트 
+app.get("/subscribe", subscribersController.getSubscriptionPage)
 // 구독 데이터 처리를 위한 POST 라우트
-
+app.post("/subscribe", subscribersController.getSubscriptionPage)
 
 /**
  * Listing 11.4 (p. 169)
